@@ -51,7 +51,8 @@ const dispatch=useDispatch()
               <span className="badge">New</span>
             </Link>
           </li>
-          <li><a>Settings</a></li>
+          <li><Link to="/connections">Connections</Link></li>
+          <li><Link to="/Request">Request</Link></li>
           <li><a onClick={userlogout}>Logout</a></li>
         </ul>
       </div>}
