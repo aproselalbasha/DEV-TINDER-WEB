@@ -23,7 +23,7 @@ catch(err){
   navigate("/login")
 
 }
-console.log(err)
+
 }
   useEffect(()=>{
     if(!logindata){

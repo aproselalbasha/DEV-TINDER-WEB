@@ -1,10 +1,21 @@
 import React from 'react'
-import { useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux'
+import { removeUserFromFeed } from '../utils/feedslice';
+import axios from 'axios';
+import { BASE_URL } from '../utils/constant';
 
 const Usercard = ({user}) => {
+  const dispatch=useDispatch()
   if (!user) return null;
 console.log(user)
-  const { firstName, photoUrl} = user
+  const { _id,firstName, photoUrl} = user
+
+
+  const handleSendRequest =async(status,User_id)=>{
+    const res=await axios.post(BASE_URL+"/request/send/"+status+"/"+User_id,{},{withCredentials:true})
+    dispatch(removeUserFromFeed(User_id))
+  
+  }
 
 
   return (
@@ -22,8 +33,8 @@ console.log(user)
     </h2>
     <p>A card component has a figure, a body part, and inside body there are title and actions parts</p>
     <div className="card-actions justify-end">
-      <div className="badge badge-outline p-5 bg-green-400 text-stone-900">INTRESTED</div>
-      <div className="badge badge-outline p-5 bg-pink-500 text-stone-900">IGNORED</div>
+      <div className="badge badge-outline p-5 bg-green-400 text-stone-900" onClick={()=>handleSendRequest("interested",_id)}>INTRESTED</div>
+      <div className="badge badge-outline p-5 bg-pink-500 text-stone-900" onClick={()=>handleSendRequest("ignored",_id)}>IGNORED</div>
     </div>
   </div>
 </div>

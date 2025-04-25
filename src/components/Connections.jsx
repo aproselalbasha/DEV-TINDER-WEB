@@ -11,8 +11,9 @@ const connection_data=useSelector(store=>store.connections)
     const myconnections=async()=>{
         try{
             const res=await axios.get(BASE_URL+"/user/connection",{withCredentials:true})
+            console.log("API response:", res);
         
-            dispatch(addconnection(res.data))
+            dispatch(addconnection(res.data.data))
         }
         catch(err){
        console.log(err)
@@ -33,7 +34,7 @@ const connection_data=useSelector(store=>store.connections)
    }
     return (
     <>
-{connection_data.map((res)=><div  key={res._id}>
+{connection_data.map((res)=><div key={res._id}>
     
     <ul className="list bg-base-100 rounded-box shadow-md">
   

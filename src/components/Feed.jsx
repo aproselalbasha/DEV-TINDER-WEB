@@ -9,7 +9,7 @@ import { useNavigate } from 'react-router-dom'
 
 
 const Feed = () => {
-  const navigate=useNavigate()
+  
 const dispatch=useDispatch()
 const feed=useSelector(store=>store.feed)
 
@@ -17,6 +17,7 @@ const feed=useSelector(store=>store.feed)
   if (feed) return;
   try{
     const feeddata=await axios.get(BASE_URL+"/feed",{withCredentials:true})
+    console.log(feeddata)
      dispatch(addfeed(feeddata?.data?.data))
     // console.log(feeddata?.data?.data)
 
@@ -33,6 +34,10 @@ const feed=useSelector(store=>store.feed)
 useEffect(()=>{
 feedapicall()
 },[])
+if(!feed) return;
+if(feed.length<=0){
+  return <h1>No new user found </h1>
+}
 return feed ? <Usercard user={feed[0]} /> : null;
 }
 
