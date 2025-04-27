@@ -7,17 +7,31 @@ import { addrequest, removerequest } from '../utils/requestslice'
 const Request = () => {
     const dispatch=useDispatch()
     const requestlist=useSelector(store=>store.request)
-    console.log(requestlist)
+   
 const pendingrequest=async(staus,_id)=>{
-  const res=await axios.post(BASE_URL+"/request/review/"+staus+"/"+_id,{},{withCredentials:true})
- dispatch(removerequest(_id))
+  try{
+    const res=await axios.post(BASE_URL+"/request/review/"+staus+"/"+_id,{},{withCredentials:true})
+    dispatch(removerequest(_id))
+  }
+  catch(err){
+    console.log(err)
+
+  }
+  
 
 }
 
     const connectionrequest= async()=>{
+      try{
         const res=await axios.get(BASE_URL+"/user/request/received",{withCredentials:true})
         
         dispatch(addrequest(res.data.data))
+      }
+      catch(err){
+        console.log(err)
+
+      }
+    
 
     }
     useEffect(()=>{

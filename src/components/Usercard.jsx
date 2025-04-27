@@ -12,8 +12,14 @@ console.log(user)
 
 
   const handleSendRequest =async(status,User_id)=>{
-    const res=await axios.post(BASE_URL+"/request/send/"+status+"/"+User_id,{},{withCredentials:true})
-    dispatch(removeUserFromFeed(User_id))
+    try{
+      const res=await axios.post(BASE_URL+"/request/send/"+status+"/"+User_id,{},{withCredentials:true})
+      dispatch(removeUserFromFeed(User_id))
+    }
+    catch(err){
+console.log(err)
+    }
+
   
   }
 
