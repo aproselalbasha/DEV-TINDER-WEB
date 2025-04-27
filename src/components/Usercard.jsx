@@ -33,8 +33,8 @@ console.log(user)
     </h2>
     <p>A card component has a figure, a body part, and inside body there are title and actions parts</p>
     <div className="card-actions justify-end">
-      <div className="badge badge-outline p-5 bg-green-400 text-stone-900" onClick={()=>handleSendRequest("interested",_id)}>INTRESTED</div>
-      <div className="badge badge-outline p-5 bg-pink-500 text-stone-900" onClick={()=>handleSendRequest("ignored",_id)}>IGNORED</div>
+      <div className="badge badge-outline p-5 bg-green-400 text-stone-900 cursor-pointer" onClick={()=>handleSendRequest("interested",_id)}>INTRESTED</div>
+      <div className="badge badge-outline p-5 bg-pink-500 text-stone-900 cursor-pointer" onClick={()=>handleSendRequest("ignored",_id)}>IGNORED</div>
     </div>
   </div>
 </div>
