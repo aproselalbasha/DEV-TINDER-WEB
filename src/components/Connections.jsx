@@ -13,7 +13,7 @@ const connection_data=useSelector(store=>store.connections)
             const res=await axios.get(BASE_URL+"/user/connection",{withCredentials:true})
             console.log("API response:", res);
         
-            dispatch(addconnection(res.data.data))
+            dispatch(addconnection(res.data))
         }
         catch(err){
        console.log(err)
@@ -21,6 +21,7 @@ const connection_data=useSelector(store=>store.connections)
        
 
     }
+   
     useEffect(()=>{
        myconnections()
     },[])

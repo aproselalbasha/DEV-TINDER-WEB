@@ -43,7 +43,7 @@ seterror(err.response.data)
         return navigate("/profile");
       }
       catch(err){
-console.log(err.response.data)
+        seterror(err.response.data)
       }
     }
   return (
@@ -58,7 +58,7 @@ console.log(err.response.data)
     <span className="label-text"> FirstName </span>
    
   </div>
-  <input type="text" placeholder="Type here" className="input input-bordered w-full max-w-xs" onChange={e=>setfirstName(e.target.value)} value={firstName}/>
+  <input type="text" placeholder="Name atlest 7Letter" className="input input-bordered w-full max-w-xs" onChange={e=>setfirstName(e.target.value)} value={firstName}/>
   
 </label>
 
