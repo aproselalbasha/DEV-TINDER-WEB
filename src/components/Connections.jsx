@@ -3,6 +3,7 @@ import React, { useEffect } from 'react'
 import { BASE_URL } from '../utils/constant'
 import { useDispatch, useSelector } from 'react-redux'
 import { addconnection } from '../utils/connectionslice'
+import { Link } from 'react-router-dom'
 
 const Connections = () => {
     const dispatch=useDispatch()
@@ -53,9 +54,13 @@ const connection_data=useSelector(store=>store.connections)
     <button className="btn btn-square btn-ghost">
       <svg className="size-[1.2em]" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><g strokeLinejoin="round" strokeLinecap="round" strokeWidth="2" fill="none" stroke="currentColor"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"></path></g></svg>
     </button>
+    <Link to={"/chat/"+res._id}>
+    <button className="bg-blue-600 btn-ghost p-1 text-gray-800">
+  chat
+ </button></Link>
   </li>
   
-
+ 
   
 </ul>
     
